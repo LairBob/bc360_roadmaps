@@ -5,5 +5,5 @@ include: "*.view.lkml"
 label: "BC360 - All Clients"
 
 explore: mx_roadmap {
-  label: "BH - Roadmap"
+  label: "BC360 - Client Roadmaps"
 }
