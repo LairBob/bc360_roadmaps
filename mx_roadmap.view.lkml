@@ -5,9 +5,10 @@ view: mx_roadmap {
             ROW_NUMBER() OVER () row_index,
             client_id,
             service_line_code,
+            medium,
             month,
             budget
-          FROM `bc360-main.mx_roadmaps.roadmap_core_live`
+          FROM `bc360-main.mx_roadmaps.roadmap_core_base`
     ;;
   }
 
@@ -24,10 +25,17 @@ view: mx_roadmap {
     sql: ${TABLE}.budget ;;
   }
 
+  dimension: medium {
+    label: "Medium"
+    type: string
+    sql: ${TABLE}.medium ;;
+  }
+
   measure: budget_sum {
     label: "$ Budget"
     type: sum
     value_format_name: usd_0
+    sql: ${budget} ;;
   }
 
   dimension: client_id {
@@ -36,19 +44,11 @@ view: mx_roadmap {
     sql: ${TABLE}.client_id ;;
   }
 
-  dimension: month {
-    label: "Month"
-    type: date
-    sql: ${TABLE}.month ;;
-  }
-
-  dimension_group: month_group {
-    hidden: yes
+  dimension_group: timeframes {
+    label: "Timeframes"
+    hidden: no
     type: time
     timeframes: [
-      raw,
-      date,
-      week,
       month,
       quarter,
       year
@@ -59,6 +59,8 @@ view: mx_roadmap {
   }
 
   dimension: service_line_code {
+    label: "Service Line Code"
+    hidden: no
     type: string
     sql: ${TABLE}.service_line_code ;;
   }
