@@ -2,7 +2,8 @@ view: mx_roadmap {
   # sql_table_name: mx_roadmaps.roadmap_core_live ;;
   derived_table: {
     sql: SELECT
-            ROWNUMBER() OVER () row_index,
+            ROW_NUMBER() OVER () row_index,
+            client_id,
             service_line_code,
             month,
             budget
