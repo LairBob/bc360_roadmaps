@@ -1,4 +1,4 @@
-view: mx_roadmap {
+view: mx_roadmaps {
 
   derived_table: {
     sql: SELECT

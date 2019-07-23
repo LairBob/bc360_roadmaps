@@ -11,7 +11,7 @@ include: "*.view.lkml"
 
 label: "BC360 - All Clients"
 
-explore: mx_roadmap {
+explore: mx_roadmaps {
   label: "BC360 - Client Roadmaps"
 
   hidden: no
